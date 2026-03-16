@@ -10,8 +10,13 @@ let ClickPower = 1;
 
 let AutoClickDelay = 1;
 
+
+
+let PowerUpgradeCost = 50;
+
 const scoreDisplay = document.getElementById("ScoreLabel");
 const clickButton = document.getElementById("ClickButton");
+const clickPowerButton = document.getElementById("ClickPowerButton");
 
 
 // Function that adds score for button press //
@@ -21,10 +26,29 @@ function pressButton(power) {
     scoreDisplay.textContent = `Points: ${Clickpoints}`;
 }
 
+function upgradeClickPower(power) {
+    ClickPower += power;
+    scoreDisplay.textContent = `Points: ${Clickpoints}`;
+
+}
+
 clickButton.addEventListener("click", function () {
     pressButton(ClickPower);
 });
 
+clickPowerButton.addEventListener("click", function () {
+    if (Clickpoints >= PowerUpgradeCost) {
+        
+        // Deduct the cost of the upgrade //
+        Clickpoints -= PowerUpgradeCost
+
+        upgradeClickPower(1)
+
+        // The price of the upgrade doubles //
+        PowerUpgradeCost *= 2
+    } else { console.log("Not enough money for upgrade")}
+        
+});
 
 
 
