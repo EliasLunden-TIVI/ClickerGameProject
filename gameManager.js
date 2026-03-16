@@ -10,21 +10,21 @@ let ClickPower = 1;
 
 let AutoClickDelay = 1;
 
+const scoreDisplay = document.getElementById("ScoreLabel");
+const clickButton = document.getElementById("ClickButton");
 
 
 // Function that adds score for button press //
 
-function pressButton(Power) {
-
-    Clickpoints += Power
-
+function pressButton(power) {
+    Clickpoints += power;
+    scoreDisplay.textContent = `Points: ${Clickpoints}`;
 }
 
-/*
+clickButton.addEventListener("click", function () {
+    pressButton(ClickPower);
+});
 
-
-
-*/
 
 
 
