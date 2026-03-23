@@ -59,7 +59,7 @@ clickPowerButton.addEventListener("click", function () {
         upgradeClickPower(1)
 
         // The price of the upgrade increases by 50% //
-        ClickPowerUpgradeCost += ClickPowerUpgradeCost / 2 
+        ClickPowerUpgradeCost *= 2;
         clickPowerButtonPrice.textContent = `Cost: ${ClickPowerUpgradeCost}`;
     } else { console.log("Not enough money for upgrade")}
         
@@ -68,24 +68,12 @@ clickPowerButton.addEventListener("click", function () {
 AutoClickButton.addEventListener("click", function () {
     if (Clickpoints >= AutoClickUpgradeCost) {
 
+        Clickpoints -= AutoClickUpgradeCost
+
         UpgradeAutoClick(1)
 
         // The price of the upgrade increases by 50% //
         AutoClickUpgradeCost += AutoClickUpgradeCost / 2 
-        AutoClickButtonPrice.textContent = `Cost: ${AutoClickButtonPrice}`;
-        
-    }
+        AutoClickButtonPrice.textContent = `Cost: ${AutoClickButtonPrice}`; 
+    } else { console.log("Not enough money for upgrade")}
 });
-// This script is broken and causes a infinite loop //
-function AutoClick(power) {
-    while (AutoClickDelay > 0) {
-        if (AutoClickDelay > 0) {
-            setTimeout(power)
-            pressButton()
-        } else {
-            break
-        }
-        
-    } 
-    
-}
